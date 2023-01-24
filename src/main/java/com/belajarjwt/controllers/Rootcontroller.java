@@ -20,6 +20,6 @@ public class Rootcontroller {
 
     @GetMapping("about")
     public String about(Principal principal) {
-        return principal.getName();
+        return principal.toString();
     }
 }

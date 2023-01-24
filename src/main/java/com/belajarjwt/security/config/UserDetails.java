@@ -1,11 +1,10 @@
-package com.belajarjwt.security.services;
+package com.belajarjwt.security.config;
 
-import java.util.ArrayList;
-
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.belajarjwt.model.UserE;
 
 /**
  * UserDetails
@@ -16,7 +15,7 @@ public class UserDetails implements UserDetailsService {
     @Override
     public org.springframework.security.core.userdetails.UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        return new User("foo", "{noop}foo", new ArrayList<>());
+        return new UserE().setId("id").setUsername("foo").setPassword("{noop}foo");
     }
 
 }

@@ -4,3 +4,5 @@ server:
 rsa:
   public-key: classpath:certs/public.pem
   private-key: classpath:certs/private.pem
+  public-refrest-key: classpath:certs/publicf.pem
+  private-refrest-key: null
