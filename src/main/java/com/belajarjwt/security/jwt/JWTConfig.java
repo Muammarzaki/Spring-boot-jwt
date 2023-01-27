@@ -41,13 +41,13 @@ public class JWTConfig {
     @Bean
     @Qualifier("JwtRefrestDecoder")
     public JwtDecoder jwtRefrestDecoder() {
-        return NimbusJwtDecoder.withPublicKey(rsaKey.publicKey()).build();
+        return NimbusJwtDecoder.withPublicKey(rsaKey.publicRefrestKey()).build();
     }
 
     @Bean
     @Qualifier("JwtRefrestEncoder")
     public JwtEncoder jwtRefrestEncoder() {
-        JWK jwk = new RSAKey.Builder(rsaKey.publicKey()).privateKey(rsaKey.privateKey()).build();
+        JWK jwk = new RSAKey.Builder(rsaKey.publicRefrestKey()).privateKey(rsaKey.privateRefrestKey()).build();
         ImmutableJWKSet<com.nimbusds.jose.proc.SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
         return new NimbusJwtEncoder(jwks);
     }

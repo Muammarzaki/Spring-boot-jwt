@@ -9,5 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * RSAKeyProperties
  */
 @ConfigurationProperties(prefix = "rsa")
-public record RSAKeyProperties(RSAPublicKey publicKey, RSAPrivateKey privateKey, RSAPublicKey publicRefrestKey) {
+public record RSAKeyProperties(RSAPublicKey publicKey, RSAPrivateKey privateKey, RSAPublicKey publicRefrestKey,
+        RSAPrivateKey privateRefrestKey) {
 }
