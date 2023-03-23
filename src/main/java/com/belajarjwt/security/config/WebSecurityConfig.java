@@ -1,6 +1,5 @@
 package com.belajarjwt.security.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,11 +19,18 @@ import com.belajarjwt.security.jwt.JwtToUserConverter;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    @Autowired
     private UserDetails userDetailsService;
 
-    @Autowired
     private JwtToUserConverter jwtToUserConverter;
+
+    /**
+     * @param userDetailsService
+     * @param jwtToUserConverter
+     */
+    public WebSecurityConfig(UserDetails userDetailsService, JwtToUserConverter jwtToUserConverter) {
+        this.userDetailsService = userDetailsService;
+        this.jwtToUserConverter = jwtToUserConverter;
+    }
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

@@ -1,6 +1,5 @@
 package com.belajarjwt.security.jwt;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,11 +17,20 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 
 @Configuration
 public class JWTConfig {
-    @Autowired
-    public RSAKeyProperties rsaKey;
+    
+    public final RSAKeyProperties rsaKey;
 
-    @Autowired
-    public JwtToUserConverter jwtToUserConverter;
+    
+    public final JwtToUserConverter jwtToUserConverter;
+
+    /**
+     * @param rsaKey
+     * @param jwtToUserConverter
+     */
+    public JWTConfig(RSAKeyProperties rsaKey, JwtToUserConverter jwtToUserConverter) {
+        this.rsaKey = rsaKey;
+        this.jwtToUserConverter = jwtToUserConverter;
+    }
 
     @Bean
     @Primary
@@ -60,10 +68,4 @@ public class JWTConfig {
         return jwtAuthProvider;
     }
 
-    /**
-     * @param jwtToUserConverter the jwtToUserConverter to set
-     */
-    public void setJwtToUserConverter(JwtToUserConverter jwtToUserConverter) {
-        this.jwtToUserConverter = jwtToUserConverter;
-    }
 }

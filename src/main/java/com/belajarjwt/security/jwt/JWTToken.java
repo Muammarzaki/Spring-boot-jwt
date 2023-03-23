@@ -82,11 +82,4 @@ public class JWTToken {
         return jwtDto;
     }
 
-    /**
-     * @param jwtEncoder the jwtEncoder to set
-     */
-    public void setJwtEncoder(JwtEncoder jwtEncoder) {
-        this.jwtAccessEncoder = jwtEncoder;
-    }
-
 }
